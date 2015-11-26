@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITWEB2", "ITWEB2\ITWEB2.csproj", "{F0DB3508-5E6D-450C-AA35-453046FB5CA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{8098CEAE-A367-4EBF-B4EA-AF994BBB45E6}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{5CBA2634-BC2F-4875-B8B4-FE1115EE9149}"
 EndProject
 Global
@@ -21,6 +23,10 @@ Global
 		{5CBA2634-BC2F-4875-B8B4-FE1115EE9149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CBA2634-BC2F-4875-B8B4-FE1115EE9149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CBA2634-BC2F-4875-B8B4-FE1115EE9149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8098CEAE-A367-4EBF-B4EA-AF994BBB45E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8098CEAE-A367-4EBF-B4EA-AF994BBB45E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8098CEAE-A367-4EBF-B4EA-AF994BBB45E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8098CEAE-A367-4EBF-B4EA-AF994BBB45E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
