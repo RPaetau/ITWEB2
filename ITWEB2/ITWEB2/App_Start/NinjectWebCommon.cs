@@ -66,16 +66,13 @@ namespace ITWEB2.App_Start
         {
 
             kernel.Bind<IGenericRepository<User>>()
-              .To<GenericRepository<User>>()
-              .InRequestScope();
+              .To<GenericRepository<User>>();
 
             kernel.Bind<IGenericRepository<FoodStuffs>>()
-              .To<GenericRepository<FoodStuffs>>()
-              .InRequestScope();
+              .To<GenericRepository<FoodStuffs>>();
 
             kernel.Bind<IGenericRepository<DailyIntake>>()
-              .To<GenericRepository<DailyIntake>>()
-              .InRequestScope();
+              .To<GenericRepository<DailyIntake>>();
 
         }        
     }

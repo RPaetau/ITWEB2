@@ -9,6 +9,7 @@ namespace DAL.Entities
         public string UserId { get; set; }
         public int Weight { get; set; }
         public IEnumerable<FoodStuffs> MyFoodStuffs { get; set; }
+        public IEnumerable<DailyIntake> MyDailyIntakes { get; set; }
 
     }
 }

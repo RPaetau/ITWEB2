@@ -22,6 +22,11 @@ namespace ITWEB2.Controllers
             this._foodstuffsRepo = foodstuffsRepo;
         }
 
+        public FoodStuffsController()
+        {
+            _foodstuffsRepo = new GenericRepository<FoodStuffs>(new DAL.Context());
+        }
+
 
         // GET: api/FoodStuffs
         public string Get()
@@ -50,11 +55,9 @@ namespace ITWEB2.Controllers
         }
 
         // POST: api/FoodStuffs
-        public void Post([FromBody]string value)
+        public void Post(FoodStuffs data)
         {
-            var food = JsonConvert.DeserializeObject<FoodStuffs>(value);
-            _foodstuffsRepo.Insert(food);
-
+            _foodstuffsRepo.Insert(data);
         }
 
         // PUT: api/FoodStuffs/5

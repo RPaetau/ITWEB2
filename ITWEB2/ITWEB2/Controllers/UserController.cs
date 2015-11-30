@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Web.Http;
+using DAL;
 using DAL.Entities;
 using DAL.Repository;
 using Microsoft.AspNet.Identity;
@@ -21,6 +22,10 @@ namespace ITWEB2.Controllers
             _userRepo = userRepo;
         }
 
+        public UserController()
+        {
+            _userRepo = new GenericRepository<User>(new Context());
+        }
 
         // GET: api/User
         public string Get()
