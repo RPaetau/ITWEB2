@@ -277,7 +277,6 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
-    <Content Include="Scripts\app\controllers\LandingPageController.js" />
     <Content Include="Scripts\app\controllers\HomeController.js" />
     <Content Include="Scripts\app\ProteinCalculatorApp.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
