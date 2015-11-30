@@ -8,10 +8,10 @@ ProteinCalculatorApp.config([
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'Scripts/app/views/LandingPageView.html',
-                controller: 'LandingPageController'
+                templateUrl: 'Scripts/app/views/HomeView.html',
+                controller: 'HomeController'
             });
     }
 ]);
 
-ProteinCalculatorApp.controller('LandingPageController', LandingPageController);
+ProteinCalculatorApp.controller('HomeController', HomeController);
