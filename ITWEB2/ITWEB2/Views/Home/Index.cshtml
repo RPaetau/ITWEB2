@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
-<html ng-app ng-cloak>
+<html ng-app="ProteinCalculatorApp"  ng-cloak>
 <head>
     <title ng-bind="helloAngular"></title>
 </head>
 <body>
+    <div ui-view></div>
 
-    <input type="text" ng-model="helloAngular" />
-    <h1>{{helloAngular}}</h1>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="~/Scripts/angular-ui-router.js"></script>
     @Scripts.Render("~/bundles/ProteinCalculatorApp")
 </body>
 </html>

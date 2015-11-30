@@ -10,13 +10,12 @@ namespace ITWEB2
         {
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/ProteinCalculatorApp")
-                .IncludeDirectory("~/Scripts/app/", "*.js")
-                .Include("~/Scripts/ProteinCalculatorApp.js"));
-
-            BundleTable.EnableOptimizations = true;
+                .IncludeDirectory("~/Scripts/app/controllers", "*.js")
+                .Include("~/Scripts/app/ProteinCalculatorApp.js"));
         }
     }
 }
