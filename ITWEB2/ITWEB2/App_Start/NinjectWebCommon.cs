@@ -1,3 +1,6 @@
+using DAL.Entities;
+using DAL.Repository;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ITWEB2.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ITWEB2.App_Start.NinjectWebCommon), "Stop")]
 
@@ -61,6 +64,19 @@ namespace ITWEB2.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+
+            kernel.Bind<IGenericRepository<User>>()
+              .To<GenericRepository<User>>()
+              .InRequestScope();
+
+            kernel.Bind<IGenericRepository<FoodStuffs>>()
+              .To<GenericRepository<FoodStuffs>>()
+              .InRequestScope();
+
+            kernel.Bind<IGenericRepository<DailyIntake>>()
+              .To<GenericRepository<DailyIntake>>()
+              .InRequestScope();
+
         }        
     }
 }
