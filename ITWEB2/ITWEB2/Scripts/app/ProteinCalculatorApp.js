@@ -7,7 +7,7 @@ ProteinCalculatorApp.config([
 
         $stateProvider
             .state('home', {
-                url: '/',
+                url: '/home',
                 templateUrl: 'Scripts/app/views/HomeView.html',
                 controller: 'HomeController'
             });
