@@ -3,12 +3,12 @@
 ProteinCalculatorApp.config([
     '$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
         // default route
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl: 'Scripts/app/views/HomeView.html',
+                templateUrl: '/Scripts/app/views/HomeView.html',
                 controller: 'HomeController'
             });
     }
