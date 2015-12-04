@@ -257,8 +257,12 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\app\controllers\HomeController.js" />
+    <Content Include="Scripts\app\controllers\IntakeController.js" />
+    <Content Include="Scripts\app\controllers\UserController.js" />
     <Content Include="Scripts\app\ProteinCalculatorApp.js" />
     <Content Include="Scripts\app\views\HomeView.html" />
+    <Content Include="Scripts\app\views\IntakeView.html" />
+    <Content Include="Scripts\app\views\UserView.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
