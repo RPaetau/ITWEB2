@@ -1,6 +1,6 @@
 ﻿var HomeController = function ($scope) {
     $scope.models = {
-        helloAngular: 'I work!'
+        helloAngular: 'This is the HomePage. Login or register to gain access to the app.'
     };
 }
 
