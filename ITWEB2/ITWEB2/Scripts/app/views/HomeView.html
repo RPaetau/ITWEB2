@@ -1,4 +1,19 @@
 ﻿<div ng-controller="HomeController" class="container-fluid">
-    <input type="text" ng-model="models.helloAngular" />
-    <h1>{{models.helloAngular}}</h1>
+
+    <div>
+        <input type="text" ng-model="models.FoodName" placeholder="Navn"/>
+        <input type="number" ng-model="models.Protein" placeholder="Protein pr 100 gr."/>
+        <button ng-click="submitFood()">Gem</button>
+        <button ng-click="clearFood()" >Clear</button>
+        
+    </div>
+
+    <h2>Liste af Foodstuffs</h2>
+    <table class="table-bordered table-striped table-condensed">
+        <tr ng-repeat="lof in models.listOfFood | orderBy:'Navn'">
+            <td>{{lof.Navn}}</td>
+            <td>{{lof.Protein100Gr}}</td>
+        </tr>
+    </table>
+
 </div>
