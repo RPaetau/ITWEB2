@@ -4,7 +4,8 @@
     };
 
     var callbackData = function(data) {
-        $scope.models.listOfFood = data;
+        $scope.models.listOfFood = JSON.parse(data);
+        $scope.$digest();
     }
 
     var init = function() {
