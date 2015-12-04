@@ -8,19 +8,14 @@
         $scope.$digest();
     }
 
-    var init = function() {
-        //$.ajax({
-        //    dataType: "json",
-        //    url: "/api/FoodStuffs",
-        //    data: data,
-        //    success: callbackData
-        //});
 
+
+    var init = function() {
         $http({
             method: 'GET',
             url: '/api/FoodStuffs'
         }).then(function successCallback(response) {
-            callbackData(response.data)
+            callbackData(response.data);
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -28,6 +23,33 @@
 
 
     }
+
+    $scope.submitFood = function () {
+        var model = {
+            "Id": "null", 
+            "Navn": $scope.models.FoodName,
+            "Protein100Gr": $scope.models.Protein,
+            "User": "null",
+            "UserId": "null"
+        }
+        $http({
+            method: 'POST',
+            url: '/api/FoodStuffs',
+            data: model
+        }).then(function successCallback(response) {
+            init();
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    }
+
+    $scope.clearFood = function () {
+        $scope.models.FoodName = null;
+        $scope.models.Protein = null;
+        $scope.$digest();
+    }
+
 
     init();
 }
