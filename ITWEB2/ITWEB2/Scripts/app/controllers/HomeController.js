@@ -51,6 +51,29 @@
     }
 
 
+    $scope.getMyUser = function(){
+        $http({
+            url: '/api/User/1',
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': '*/*',
+                'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
+            }
+        })
+        .success(function (response) {
+            alert(response);
+        })
+        .error(function (error) {
+            console.log("Error:");
+            console.log(error);
+        });
+    }
+
+
+
+
+
     init();
 }
 

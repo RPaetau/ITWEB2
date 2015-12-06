@@ -343,7 +343,7 @@ namespace ITWEB2.Controllers
             else
             {
                 var otherController = DependencyResolver.Current.GetService<UserController>();
-                otherController.Post();
+                otherController.Post(user.Id);
             }
             return Ok();
         }
@@ -381,7 +381,7 @@ namespace ITWEB2.Controllers
             else
             {
                 var otherController = DependencyResolver.Current.GetService<UserController>();
-                otherController.Post();
+                otherController.Post(user.Id);
             }
             return Ok();
         }
