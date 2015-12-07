@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201511301406429_dailyIntakes2.Designer.cs">
       <DependentUpon>201511301406429_dailyIntakes2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512061539076_didIForget.cs" />
+    <Compile Include="Migrations\201512061539076_didIForget.Designer.cs">
+      <DependentUpon>201512061539076_didIForget.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511301406429_dailyIntakes2.resx">
       <DependentUpon>201511301406429_dailyIntakes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512061539076_didIForget.resx">
+      <DependentUpon>201512061539076_didIForget.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
