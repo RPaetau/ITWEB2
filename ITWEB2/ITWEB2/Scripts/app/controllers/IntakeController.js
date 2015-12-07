@@ -54,7 +54,11 @@
 
     $http({
         method: 'GET',
-        url: '/api/FoodStuffs'
+        url: '/api/FoodStuffs',
+        headers: {
+            'Accept': '*/*',
+            'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
+        }
     }).then(function successCallback(response) {
         callbackData(response.data);
     }, function errorCallback(response) {
@@ -62,7 +66,19 @@
         // or server returns response with an error status.
     });
 
-
+    $http({
+        method: 'GET',
+        url: '/api/DailyIntake',
+        headers: {
+            'Accept': '*/*',
+            'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
+        }
+    }).then(function successCallback(response) {
+        $scope.models.listOfDailyIntakes = JSON.parse(response.data);
+    }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+    });
 
 
 

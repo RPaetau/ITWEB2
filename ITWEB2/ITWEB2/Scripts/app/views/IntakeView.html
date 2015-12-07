@@ -23,7 +23,14 @@
                 <td><input type="number" name="gramsEatenToday" ng-model="lof.Amount" placeholder="Grams eaten today"/></td>
             </tr>
         </table>
-        <button ng-click="SubmitDailyIntake()"></button>
+        <button ng-click="SubmitDailyIntake()">Save daily Intake</button>
     </div>
+
+    <table class="table-bordered table-striped">
+        <tr ng-repeat="lodi in models.listOfDailyIntakes">
+            <td>{{lodi.SamletProtein}}</td>
+            <td>{{lodi.Date}}</td>
+        </tr>
+    </table>
 
 </div>
