@@ -28,11 +28,11 @@ namespace ITWEB2.Controllers
         // GET: api/DailyIntake
         public string Get()
         {
-
-            var users = _userRepo.Get(x => x.UserId == User.Identity.GetUserId(),null,"DailyIntake").First().MyDailyIntakes;
+            var _userId = User.Identity.GetUserId();
+            var dailyIntakes = _dailyIntakeRepo.Get(x => x.User.UserId == _userId);
             MemoryStream stream = new MemoryStream();
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(IEnumerable<DailyIntake>));
-            ser.WriteObject(stream, users);
+            ser.WriteObject(stream, dailyIntakes);
             stream.Position = 0;
             StreamReader sr = new StreamReader(stream);
 
@@ -56,11 +56,15 @@ namespace ITWEB2.Controllers
         // POST: api/DailyIntake
         public void Post([FromBody]DailyIntake value)
         {
-            var user = _userRepo.Get(x => x.UserId == User.Identity.GetUserId()).First();
-            
-            user.MyDailyIntakes.ToList().Add(value);
+            var _userId = User.Identity.GetUserId();
 
-            _userRepo.Update(user);
+            var user = _userRepo.Get(x => x.UserId == _userId).First();
+
+            value.User = user;
+            value.Date = DateTime.Now;
+            value.UserId = user.Id;
+
+            _dailyIntakeRepo.Insert(value);
 
         }
 

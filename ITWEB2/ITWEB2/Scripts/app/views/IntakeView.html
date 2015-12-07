@@ -1,9 +1,36 @@
 ﻿<div ng-controller="IntakeController" class="container-fluid">
 
     <div>
-        DET HAR JEG BEJOV FOR I DAG;
-        DET HAR JEG SPIST I DAG;
-        I DAG ER JEG VOKSEN/SVAG/PUMPET;
+        <form>
+            <h4>Today I am:</h4>
+            <button ng-click="IAmAdult()">Adult</button>
+            <button ng-click="IAmWeakened()">Weakened</button>
+            <button ng-click="IAmTraining()">Training</button>
+        </form>
+        <form>
+            <input type="number" name="weight" ng-model="UserWeight"/> Weight in kg
+            <br/>
+            <button ng-click="SubmitData()">Calculate</button>
+        </form>
+        You need {{GramsPrDayNeeded}} grams of protein today.
+        <br/>
+        <br/>
+        <h4>Today I have eaten:</h4>
+        <table class="table-bordered table-striped table-condensed">
+            <tr ng-repeat="lof in models.listOfFood | orderBy:'Navn'">
+                <td>{{lof.Navn}}</td>
+                <td>{{lof.Protein100Gr}}</td>
+                <td><input type="number" name="gramsEatenToday" ng-model="lof.Amount" placeholder="Grams eaten today"/></td>
+            </tr>
+        </table>
+        <button ng-click="SubmitDailyIntake()">Save daily Intake</button>
     </div>
+
+    <table class="table-bordered table-striped">
+        <tr ng-repeat="lodi in models.listOfDailyIntakes">
+            <td>{{lodi.SamletProtein}}</td>
+            <td>{{lodi.Date}}</td>
+        </tr>
+    </table>
 
 </div>
