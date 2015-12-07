@@ -2,6 +2,9 @@
     $scope.models = {
         helloAngular: 'This is the HomePage. Login or register to gain access to the app.'
     };
+    $scope.User = {};
+
+
 
     var callbackData = function(data) {
         $scope.models.listOfFood = JSON.parse(data);
@@ -20,6 +23,7 @@
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
+        $scope.getMyUser();
 
 
     }
@@ -62,8 +66,8 @@
             }
         })
         .success(function (response) {
-            alert(response);
-        })
+                $scope.User = JSON.parse(response);
+            })
         .error(function (error) {
             console.log("Error:");
             console.log(error);

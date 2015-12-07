@@ -47,7 +47,7 @@ namespace ITWEB2.Controllers
             return sr.ReadToEnd();
         }
 
-        // GET: api/User/5
+        // GET: api/User/-1
         public string GetMyUser(int Id)
         {
 
