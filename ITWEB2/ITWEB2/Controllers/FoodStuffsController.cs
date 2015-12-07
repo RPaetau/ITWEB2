@@ -31,14 +31,32 @@ namespace ITWEB2.Controllers
         // GET: api/FoodStuffs
         public string Get()
         {
-            var users = _foodstuffsRepo.Get(x => x.User == null);
-            MemoryStream stream = new MemoryStream();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(IEnumerable<FoodStuffs>));
-            ser.WriteObject(stream, users);
-            stream.Position = 0;
-            StreamReader sr = new StreamReader(stream);
+            if (User.Identity.GetUserId() != null)
+            {
+                var users = _foodstuffsRepo.Get(x => x.User == null || x.User.UserId == User.Identity.GetUserId());
+                MemoryStream stream = new MemoryStream();
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(IEnumerable<FoodStuffs>));
+                ser.WriteObject(stream, users);
+                stream.Position = 0;
+                StreamReader sr = new StreamReader(stream);
 
-            return sr.ReadToEnd();
+                return sr.ReadToEnd();
+            }
+            else
+            {
+                var users = _foodstuffsRepo.Get(x => x.User == null);
+                MemoryStream stream = new MemoryStream();
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(IEnumerable<FoodStuffs>));
+                ser.WriteObject(stream, users);
+                stream.Position = 0;
+                StreamReader sr = new StreamReader(stream);
+
+                return sr.ReadToEnd();
+            }
+
+
+
+
         }
 
         // GET: api/FoodStuffs/5
