@@ -27,6 +27,7 @@
 
     $scope.logout = function() {
         $http.post('/api/Account/Logout');
+        localStorage.removeItem("tokenKey");
         $state.transitionTo('home');
     }
 }
