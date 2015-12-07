@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Web.Http;
+using DAL;
 using DAL.Entities;
 using DAL.Repository;
 using Microsoft.AspNet.Identity;
@@ -16,14 +17,17 @@ namespace ITWEB2.Controllers
     public class FoodStuffsController : ApiController
     {
         private IGenericRepository<FoodStuffs> _foodstuffsRepo;
+        private IGenericRepository<User> _userRepo; 
 
-        public FoodStuffsController(IGenericRepository<FoodStuffs> foodstuffsRepo)
+        public FoodStuffsController(IGenericRepository<FoodStuffs> foodstuffsRepo, IGenericRepository<User> userRepo)
         {
             this._foodstuffsRepo = foodstuffsRepo;
+            _userRepo = userRepo;
         }
 
         public FoodStuffsController()
         {
+            _userRepo = new GenericRepository<User>(new Context());
             _foodstuffsRepo = new GenericRepository<FoodStuffs>(new DAL.Context());
         }
 
@@ -31,14 +35,33 @@ namespace ITWEB2.Controllers
         // GET: api/FoodStuffs
         public string Get()
         {
-            var users = _foodstuffsRepo.Get(x => x.User == null);
-            MemoryStream stream = new MemoryStream();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(IEnumerable<FoodStuffs>));
-            ser.WriteObject(stream, users);
-            stream.Position = 0;
-            StreamReader sr = new StreamReader(stream);
+            if (User.Identity.GetUserId() != null)
+            {
+                var _UserId = User.Identity.GetUserId();
+                var users = _foodstuffsRepo.Get(x => x.User == null || x.User.UserId == _UserId);
+                MemoryStream stream = new MemoryStream();
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(IEnumerable<FoodStuffs>));
+                ser.WriteObject(stream, users);
+                stream.Position = 0;
+                StreamReader sr = new StreamReader(stream);
 
-            return sr.ReadToEnd();
+                return sr.ReadToEnd();
+            }
+            else
+            {
+                var users = _foodstuffsRepo.Get(x => x.User == null);
+                MemoryStream stream = new MemoryStream();
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(IEnumerable<FoodStuffs>));
+                ser.WriteObject(stream, users);
+                stream.Position = 0;
+                StreamReader sr = new StreamReader(stream);
+
+                return sr.ReadToEnd();
+            }
+
+
+
+
         }
 
         // GET: api/FoodStuffs/5
@@ -57,6 +80,12 @@ namespace ITWEB2.Controllers
         // POST: api/FoodStuffs
         public void Post(FoodStuffs data)
         {
+            if (User.Identity.GetUserId() != null)
+            {
+                var _userId = User.Identity.GetUserId();
+                data.User = _userRepo.Get(x => x.UserId == _userId).First();
+                data.UserId = data.User.Id;
+            }
             _foodstuffsRepo.Insert(data);
         }
 

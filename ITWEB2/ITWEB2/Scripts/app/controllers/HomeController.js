@@ -2,6 +2,9 @@
     $scope.models = {
         helloAngular: 'This is the HomePage. Login or register to gain access to the app.'
     };
+    $scope.User = {};
+
+
 
     var callbackData = function(data) {
         $scope.models.listOfFood = JSON.parse(data);
@@ -13,13 +16,19 @@
     var init = function() {
         $http({
             method: 'GET',
-            url: '/api/FoodStuffs'
+            url: '/api/FoodStuffs',
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': '*/*',
+            'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
+            }
         }).then(function successCallback(response) {
             callbackData(response.data);
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
+        $scope.getMyUser();
 
 
     }
@@ -35,7 +44,11 @@
         $http({
             method: 'POST',
             url: '/api/FoodStuffs',
-            data: model
+            data: model,
+            headers: {
+                'Accept': '*/*',
+                'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
+            }
         }).then(function successCallback(response) {
             init();
         }, function errorCallback(response) {
@@ -62,8 +75,8 @@
             }
         })
         .success(function (response) {
-            alert(response);
-        })
+                $scope.User = JSON.parse(response);
+            })
         .error(function (error) {
             console.log("Error:");
             console.log(error);
