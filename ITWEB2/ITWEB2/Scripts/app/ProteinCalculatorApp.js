@@ -3,7 +3,7 @@
 ProteinCalculatorApp.config([
     '$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
         // default route
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/home');
 
         $stateProvider
             .state('home', {
@@ -20,6 +20,16 @@ ProteinCalculatorApp.config([
                 url: '/user',
                 templateUrl: '/Scripts/app/views/UserView.html',
                 controller: 'UserController'
+            })
+            .state('register', {
+                url: '/register',
+                templateUrl: '/Scripts/app/views/RegisterView.html',
+                controller: 'RegisterController'
+            })
+        .state('login', {
+            url: '/login',
+            templateUrl: 'Scripts/app/views/LoginView.html',
+            controller: 'LoginController'
             });
     }
 ]);
@@ -27,3 +37,5 @@ ProteinCalculatorApp.config([
 ProteinCalculatorApp.controller('HomeController', HomeController);
 ProteinCalculatorApp.controller('IntakeController', IntakeController);
 ProteinCalculatorApp.controller('UserController', UserController);
+ProteinCalculatorApp.controller('RegisterController', RegisterController);
+ProteinCalculatorApp.controller('LoginController', LoginController)
