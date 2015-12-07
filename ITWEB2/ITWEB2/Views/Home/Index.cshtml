@@ -1,31 +1,12 @@
 ﻿<!DOCTYPE html>
-<html ng-app="ProteinCalculatorApp"  ng-cloak>
+<html ng-app="ProteinCalculatorApp" ng-cloak>
 <head>
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
     <title>Protein Calculator</title>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" ui-sref="home">Proteinos!</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a ui-sref="intake">Intake <span class="sr-only">(current)</span></a></li>
-                    <li><a ui-sref="user">User <span class="sr-only">(current)</span></a></li>
-                </ul>
-                <form class="navbar-form navbar-right" role="navigation">
-                    <button class="btn btn-info" ui-sref="register">Register</button>
-                    <button class="btn btn-primary" ui-sref="login">Log In</button>
-                    <button class="btn btn-warning">Log Out</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-
-    <div ui-view></div>
+    <div ui-view name="nav"></div>
+    <div ui-view name="content"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
     <script src="~/Scripts/angular-ui-router.js"></script>

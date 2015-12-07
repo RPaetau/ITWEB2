@@ -1,0 +1,21 @@
+﻿<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="home">Proteinos!</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
+                <li><a ui-sref="intake">Intake <span class="sr-only">(current)</span></a></li>
+                <li><a ui-sref="user">User <span class="sr-only">(current)</span></a></li>
+            </ul>
+            <form class="navbar-form navbar-right" role="navigation">
+                <label class="label ">Hello {{$rootScope.UserData.Username}}!</label>
+                <button class="btn btn-info" ui-sref="register" id="RegisterBtn" ng-hide="loginStatus">Register</button>
+                <button class="btn btn-primary" ui-sref="login" id="LoginBtn" ng-hide="loginStatus">Log In</button>
+                <button class="btn btn-warning" ng-click="logout()" id="LogoutBtn" ng-show="loginStatus">Log Out</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<pre>{{$scope|json}}</pre>

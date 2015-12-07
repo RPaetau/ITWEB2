@@ -1,4 +1,6 @@
 ﻿var HomeController = function ($scope, $http) {
+    
+
     $scope.models = {
         helloAngular: 'This is the HomePage. Login or register to gain access to the app.'
     };
@@ -8,12 +10,11 @@
 
     var callbackData = function(data) {
         $scope.models.listOfFood = JSON.parse(data);
-        $scope.$digest();
     }
 
 
 
-    var init = function() {
+    $scope.init = function() {
         $http({
             method: 'GET',
             url: '/api/FoodStuffs'
@@ -23,7 +24,7 @@
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
-        $scope.getMyUser();
+        //$scope.getMyUser();
 
 
     }
@@ -67,18 +68,12 @@
         })
         .success(function (response) {
                 $scope.User = JSON.parse(response);
-            })
+           })
         .error(function (error) {
             console.log("Error:");
             console.log(error);
         });
     }
-
-
-
-
-
-    init();
 }
 
 // The $inject property of every controller (and pretty much every other type of object in Angular) needs to be a string array equal to the controllers arguments, only as strings
