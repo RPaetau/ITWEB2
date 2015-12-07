@@ -23,7 +23,7 @@
         });
         var intakeModel = {
             "Id": "null",
-            "SamletProtein": total,
+            "SamletProtein": Math.round(total),
             "Date": "null",
             "User": "null",
             "UserId": "null"
