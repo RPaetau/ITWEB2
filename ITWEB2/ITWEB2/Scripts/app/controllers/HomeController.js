@@ -16,7 +16,12 @@
     var init = function() {
         $http({
             method: 'GET',
-            url: '/api/FoodStuffs'
+            url: '/api/FoodStuffs',
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': '*/*',
+            'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
+            }
         }).then(function successCallback(response) {
             callbackData(response.data);
         }, function errorCallback(response) {
@@ -39,7 +44,11 @@
         $http({
             method: 'POST',
             url: '/api/FoodStuffs',
-            data: model
+            data: model,
+            headers: {
+                'Accept': '*/*',
+                'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
+            }
         }).then(function successCallback(response) {
             init();
         }, function errorCallback(response) {
