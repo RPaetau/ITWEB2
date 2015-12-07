@@ -18,7 +18,6 @@
             method: 'GET',
             url: '/api/FoodStuffs',
             headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': '*/*',
             'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
             }

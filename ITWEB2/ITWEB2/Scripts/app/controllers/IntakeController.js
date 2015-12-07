@@ -15,6 +15,34 @@
         multiplier = 2;
     }
 
+    $scope.SubmitDailyIntake = function () {
+        var total = 0;
+        $scope.models.listOfFood.forEach(function (item) {
+            if (!isNaN(item.Amount))
+                total += item.Amount * (item.Protein100Gr / 100);
+        });
+        var intakeModel = {
+            "Id": "null",
+            "SamletProtein": total,
+            "Date": "null",
+            "User": "null",
+            "UserId": "null"
+        }
+        $http({
+            method: 'POST',
+            url: '/api/DailyIntake',
+            data: intakeModel,
+            headers: {
+                'Accept': '*/*',
+                'Authorization': 'Bearer ' + localStorage.getItem('tokenKey')
+            }
+        }).then(function () {
+            alert("DONE");
+        });
+
+
+    }
+
     $scope.SubmitData = function (){
         $scope.GramsPrDayNeeded = $scope.UserWeight * multiplier;
     }
@@ -34,19 +62,9 @@
         // or server returns response with an error status.
     });
 
-    var intakeModel = {
-            "Id": "null", 
-            "SamletProtein": 0,
-            "Date": "null",
-            "User": "null",
-            "UserId": "null"
-        }
 
-    $http({
-        method: 'POST',
-        url: '/api/DaylyIntake'
-    }).then(function () {
-    });
+
+
 
 }
 

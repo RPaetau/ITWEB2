@@ -56,8 +56,13 @@ namespace ITWEB2.Controllers
         // POST: api/DailyIntake
         public void Post([FromBody]DailyIntake value)
         {
-            var user = _userRepo.Get(x => x.UserId == User.Identity.GetUserId()).First();
+            var _userId = User.Identity.GetUserId();
+
+            var user = _userRepo.Get(x => x.UserId == _userId).First();
             
+            if(user.MyDailyIntakes == null)
+                user.MyDailyIntakes = new List<DailyIntake>();
+
             user.MyDailyIntakes.ToList().Add(value);
 
             _userRepo.Update(user);

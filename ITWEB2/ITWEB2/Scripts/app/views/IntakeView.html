@@ -20,9 +20,10 @@
             <tr ng-repeat="lof in models.listOfFood | orderBy:'Navn'">
                 <td>{{lof.Navn}}</td>
                 <td>{{lof.Protein100Gr}}</td>
-                <td><input type="number" name="gramsEatenToday"/></td>
+                <td><input type="number" name="gramsEatenToday" ng-model="lof.Amount" placeholder="Grams eaten today"/></td>
             </tr>
         </table>
+        <button ng-click="SubmitDailyIntake()"></button>
     </div>
 
 </div>
